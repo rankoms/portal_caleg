@@ -8,7 +8,7 @@
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-	<title>Basic Inputs - Forms | Frest - Bootstrap Admin Template</title>
+	<title>@yield('title', \config('app.name'))</title>
 
 	<meta name="description" content="" />
 
@@ -38,6 +38,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
 
 	<!-- Page CSS -->
+	@yield('vendor-style')
 
 	<!-- Helpers -->
 	<script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
@@ -108,6 +109,10 @@
 	<script src="{{ asset('assets/js/main.js') }}"></script>
 
 	<!-- Page JS -->
+
+	@yield('vendor-script')
+	@yield('page-script')
+	@yield('js')
 
 	<script src="{{ asset('assets/js/form-basic-inputs.js') }}"></script>
 </body>
