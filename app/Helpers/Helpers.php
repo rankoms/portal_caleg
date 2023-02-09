@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-function are_active_routes(array $routes)
+
+function areActiveRoutes(array $routes, $output = " open")
 {
+    $output = session('theme') == 'dark' ? 'active-dark open' : 'active-light open';
     foreach ($routes as $route) {
-        if (Route::currentRouteName() == $route) return true;
+        if (Route::currentRouteName() == $route) return $output;
     }
 }
 

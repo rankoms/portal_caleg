@@ -52,21 +52,21 @@
 
 	<ul class="menu-inner py-1">
 		<!-- Dashboards -->
-		<li class="menu-item">
+		<li class="menu-item {{ areActiveRoutes(['admin.index']) }}">
 			<a href="{{ route('admin.index') }}" class="menu-link">
 				<i class="menu-icon tf-icons bx bx-home-circle"></i>
 				<div data-i18n="Dashboards">Dashboards</div>
 			</a>
 		</li>
-		<li class="menu-item">
+		<li class="menu-item {{ areActiveRoutes(['admin.people.index']) }}">
 			<a href="{{ route('admin.people.index') }}" class="menu-link">
-				<i class="menu-icon tf-icons bx bx-home-circle"></i>
+				<i class="menu-icon tf-icons bx bx-user-check"></i>
 				<div data-i18n="Dashboards">People</div>
 			</a>
 		</li>
-		<li class="menu-item">
+		<li class="menu-item  {{ areActiveRoutes(['admin.news.index']) }}">
 			<a href="{{ route('admin.news.index') }}" class="menu-link">
-				<i class="menu-icon tf-icons bx bx-home-circle"></i>
+				<i class="menu-icon tf-icons bx bx-news"></i>
 				<div data-i18n="Dashboards">News</div>
 			</a>
 		</li>

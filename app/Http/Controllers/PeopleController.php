@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\ResponseFormatter;
 use App\Models\People;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Test\Constraint\ResponseFormatSame;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -27,17 +28,6 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        request()->validate([
-            'name' => ['required'],
-            'nik' => ['required', 'unique:people,nik'],
-            'alamat' => ['nullable'],
-            'no_telp' => ['nullable'],
-            'email' => ['nullable', 'email'],
-        ]);
-        $people = new People();
-
-
-        return ResponseFormatter::success(null, __('Success'));
     }
 
     /**
@@ -48,7 +38,28 @@ class PeopleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => ['required'],
+            'nik' => ['required', 'unique:people,nik'],
+            'alamat' => ['nullable'],
+            'no_telp' => ['nullable'],
+            'email' => ['nullable', 'email'],
+        ]);
+        $user_id = Auth::user()->id;
+        $name = $request->name;
+        $nik = $request->nik;
+        $alamat = $request->alamat;
+        $no_telp = $request->no_telp;
+        $email = $request->email;
+        $people = new People();
+        $people->name = $name;
+        $people->nik = $nik;
+        $people->alamat = $alamat;
+        $people->no_telp = $no_telp;
+        $people->email = $email;
+        $people->user_id = $user_id;
+        $people->save();
+        return ResponseFormatter::success(null, __('Success'));
     }
 
     /**

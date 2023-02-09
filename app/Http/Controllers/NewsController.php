@@ -175,7 +175,6 @@ class NewsController extends Controller
         $news->videos = json_encode($nameVideos);
         $news->files = json_encode($nameFiles);
         $news->user_id = Auth::user()->id;
-        $news->department_id = null;
         $news->tgl_terbit = date('Y-m-d h:i:s');
         $news->highlight_status = $request->highlight_status;
         $news->highlight_image = $nameHighlightImage != '' ? $nameHighlightImage : null;
@@ -418,7 +417,6 @@ class NewsController extends Controller
         $news->videos = json_encode($nameVideos);
         $news->files = json_encode($nameFiles);
         $news->user_id = Auth::user()->id;
-        $news->department_id = null;
         $news->tgl_terbit = date('Y-m-d h:i:s');
         $news->highlight_status = $request->highlight_status;
         $news->highlight_image = $nameHighlightImage != '' ? $nameHighlightImage : $news->highlight_image;
